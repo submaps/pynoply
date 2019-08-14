@@ -39,8 +39,8 @@ def get_nearest_curvilinear_grid(ds: xr.Dataset, _id_lat_lon_list: list):
     test_lat1 = float(test_ds.XLAT.values)
     test_lat2 = float(ds.XLAT[33, 20].values)
     assert test_lon1 == test_lon2 and test_lat1 == test_lat2
-
     kdtree = MyDtree(xlat, xlong)
+
     df_list = []
     rows_coords = []
     for _id, lat0, lon0 in _id_lat_lon_list:

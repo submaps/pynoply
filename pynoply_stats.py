@@ -64,9 +64,7 @@ def plot_point_data(df, pq, title, ofile_path=None):
     plt.close()
 
 
-def main():
-    # city_name = 'spb'
-    city_name = 'msc'
+def load_datasets(city_name):
     if city_name == 'spb':
         idir_nc = r'D:\wrf_runner_data\wrfout_final_spb_127_hr_new'
         idir_obs = r'C:\HOME\netcat\data\city_obs\spb_obs'
@@ -85,10 +83,15 @@ def main():
 
     obs_data_rp5 = DataObs('rp5', idir_obs, ifile_obs_info)
     obs_data_cws = DataObs('cws', ifile_cws)
+    return  expr, idir_nc, obs_data_rp5, obs_data_cws
 
+
+def main():
+    # city_name = 'spb'
+    city_name = 'msc'
+    expr, idir_nc, obs_data_rp5, obs_data_cws = load_datasets(city_name)
     wrf_data = DataWrf(expr, idir_nc)
     # era_data = DataEra(exp, idir_era_nc)
-
     print(wrf_data)
     print()
     print(obs_data_rp5)
